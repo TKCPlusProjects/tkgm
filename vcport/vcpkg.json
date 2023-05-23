@@ -1,0 +1,16 @@
+{
+  "name": "tkgm",
+  "version": "0.1.0",
+  "description": "The tkgm is a port of vcpkg",
+  "homepage": "https://github.com/ZhengXianda/tkgm",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ]
+}
