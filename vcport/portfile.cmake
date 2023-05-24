@@ -36,9 +36,9 @@
 #  vcpkg_from_bitbucket
 #  vcpkg_from_sourceforge
 vcpkg_download_distfile(ARCHIVE
-    URLS "https://github.com/ZhengXianda/tkgm/releases/download/0.1.0/tkgm-0.1.0.zip"
-    FILENAME "tkgm-0.1.0.zip"
-    SHA512 0
+    URLS "https://github.com/TKCPlusProjects/tkgm/releases/download/0.1.1/tkgm-0.1.1.zip"
+    FILENAME "tkgm-0.1.1.zip"
+    SHA512 6417b646f570e57ec9afef43712b22b70f3a8b6c91a1fedf6cb43e5523955279cee1108608846f474f28e261a88609484e05cddb39f9d20b3e15db1f4c0811c1
 )
 
 vcpkg_extract_source_archive_ex(
