@@ -16,3 +16,10 @@ target_include_directories(
     $<BUILD_INTERFACE:${PROJECT_BASE_INCLUDE}>
     $<INSTALL_INTERFACE:include>
 )
+
+find_package(imgui REQUIRED)
+find_package(tkcore CONFIG REQUIRED)
+
+target_link_libraries(${PROJECT_NAME}
+  imgui::imgui
+  tkcore::tkcore)
