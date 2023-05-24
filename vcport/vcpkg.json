@@ -1,6 +1,6 @@
 {
   "name": "tkgm",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "The tkgm is a port of vcpkg",
   "homepage": "https://github.com/ZhengXianda/tkgm",
   "dependencies": [
