@@ -17,9 +17,11 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
 )
 
+find_package(nlohmann_json CONFIG REQUIRED)
 find_package(imgui REQUIRED)
 find_package(tkcore CONFIG REQUIRED)
 
 target_link_libraries(${PROJECT_NAME}
+  nlohmann_json::nlohmann_json
   imgui::imgui
   tkcore::tkcore)
