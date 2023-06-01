@@ -31,6 +31,7 @@ bool SetForm::Read() {
     }
   }
 
+  file.close();
   return true;
 }
 
@@ -63,6 +64,7 @@ bool SetForm::Write() {
 
   file << setw(4) << json << endl;
 
+  file.close();
   return true;
 }
 
