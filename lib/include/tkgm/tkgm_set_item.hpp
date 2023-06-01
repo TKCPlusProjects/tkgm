@@ -3,9 +3,6 @@
 
 #include <tkgm/tkgm_base.hpp>
 
-#include <fstream>
-#include <nlohmann/json.hpp>
-
 namespace tkht {
 namespace tkgm {
 class SetItem {

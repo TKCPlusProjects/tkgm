@@ -3,7 +3,6 @@
 
 #include <tkgm/tkgm_set_item.hpp>
 
-#include <fstream>
 #include <nlohmann/json.hpp>
 
 namespace tkht {
