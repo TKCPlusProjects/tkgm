@@ -1,0 +1,5 @@
+{
+  "$schema": "../module_schema.json",
+  "name": "core",
+  "version": "1.0.0"
+}

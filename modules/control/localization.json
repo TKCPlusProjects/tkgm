@@ -1,0 +1,13 @@
+{
+  "$schema": "../localization_schema.json",
+  "Chinese": {
+    "tab_control": "控制",
+    "group_control": "控制",
+    "setting_jump": "跳"
+  },
+  "English": {
+    "tab_control": "Control",
+    "group_control": "Control",
+    "setting_jump": "Jump"
+  }
+}

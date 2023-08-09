@@ -1,0 +1,27 @@
+{
+  "$schema": "../localization_schema.json",
+  "Chinese": {
+    "tab_core": "核心",
+    "tab_control": "控制",
+    "group_core": "核心",
+    "setting_check": "选择",
+    "setting_hp": "生命值",
+    "setting_mp": "魔法值",
+    "setting_left": "左",
+    "setting_right": "右",
+    "setting_up": "上",
+    "setting_down": "下"
+  },
+  "English": {
+    "tab_core": "Core",
+    "tab_control": "Control",
+    "group_core": "Core",
+    "setting_check": "Check",
+    "setting_hp": "HP",
+    "setting_mp": "MP",
+    "setting_left": "Left",
+    "setting_right": "Right",
+    "setting_up": "Up",
+    "setting_down": "Down"
+  }
+}

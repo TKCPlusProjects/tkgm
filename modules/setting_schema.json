@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "../setting_schema.json"
+    }
+  },
+  "patternProperties": {
+    "^tab_[a-z]+$": {
+      "type": "object",
+      "patternProperties": {
+        "^group_[a-z]+$": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "pattern": "^setting_[a-z|0-9|_]+$"
+                  },
+                  "type": {
+                    "const": "keybutton"
+                  },
+                  "default": {
+                    "type": "number"
+                  },
+                  "value": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "type",
+                  "default",
+                  "value"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "pattern": "^setting_[a-z|0-9|_]+$"
+                  },
+                  "type": {
+                    "const": "checkbox"
+                  },
+                  "default": {
+                    "type": "number"
+                  },
+                  "value": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "type",
+                  "default",
+                  "value"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "pattern": "^setting_[a-z|0-9|_]+$"
+                  },
+                  "type": {
+                    "const": "slideint"
+                  },
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  },
+                  "default": {
+                    "type": "number"
+                  },
+                  "value": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "type",
+                  "default",
+                  "value"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "pattern": "^setting_[a-z|0-9|_]+$"
+                  },
+                  "type": {
+                    "const": "slidefloat"
+                  },
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  },
+                  "default": {
+                    "type": "number"
+                  },
+                  "value": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "type",
+                  "default",
+                  "value"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "$schema"
+  ]
+}

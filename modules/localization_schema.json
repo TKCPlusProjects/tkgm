@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "../localization_schema.json"
+    }
+  },
+  "additionalProperties": {
+    "type": "object",
+    "patternProperties": {
+      "^tab_[a-z]+$": {
+        "type": "string"
+      },
+      "^group_[a-z]+$": {
+        "type": "string"
+      },
+      "^setting_[a-z|0-9|_]+$": {
+        "type": "string"
+      },
+      "^text_[a-z|0-9|_]+$": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  },
+  "required": [
+    "$schema"
+  ]
+}

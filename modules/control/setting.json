@@ -1,0 +1,13 @@
+{
+  "$schema": "../setting_schema.json",
+  "tab_control": {
+    "group_control": [
+      {
+        "name": "setting_jump",
+        "type": "keybutton",
+        "default": 525,
+        "value": 525
+      }
+    ]
+  }
+}
