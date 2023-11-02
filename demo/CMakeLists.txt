@@ -10,10 +10,10 @@ target_compile_features(${DEMO_NAME}
 )
 # compile options
 if (MSVC)
-  target_compile_options(${PROJECT_NAME} 
+  target_compile_options(${DEMO_NAME} 
     PUBLIC /utf-8
   )
-  target_compile_options(${PROJECT_NAME} 
+  target_compile_options(${DEMO_NAME} 
     PUBLIC /EHsc
   )
 endif()
