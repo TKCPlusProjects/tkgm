@@ -1,5 +1,10 @@
 set(DEMO_NAME demo)
 
+if(EXISTS ${CMAKE_CURRENT_BINARY_DIR}/modules)
+  file(REMOVE_RECURSE ${CMAKE_CURRENT_BINARY_DIR}/modules)
+endif()
+file(COPY ../modules DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 # add executable
 file(GLOB_RECURSE PROJECT_DEMO_SRC_LIST ./*.cpp)
 add_executable(${DEMO_NAME} ${PROJECT_DEMO_SRC_LIST})

@@ -1,13 +1,15 @@
 #include <tkgm/tkgm.hpp>
 
-int main() {
+int main(int argc, char** argv) {
   using namespace tkht;
   using namespace tkht::tkgm;
 
   Debug = true;
   SubscribeSignalList({SIGSEGV, SIGABRT});
 
-  std::string path = "modules/core/localization.json";
+  std::filesystem::path local(argv[0]);
+  
+  std::string path = local.parent_path().append("modules/core/localization.json").string();
 
   if (std::filesystem::path(path).filename() == std::string("localization.json")) {
     std::ifstream ifs(path);
