@@ -89,7 +89,9 @@
                   "name",
                   "type",
                   "default",
-                  "value"
+                  "value",
+                  "min",
+                  "max"
                 ]
               },
               {
@@ -119,7 +121,9 @@
                   "name",
                   "type",
                   "default",
-                  "value"
+                  "value",
+                  "min",
+                  "max"
                 ]
               }
             ]
