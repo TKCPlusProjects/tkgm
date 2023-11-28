@@ -14,24 +14,24 @@ void Manager::clear() {
   setting_map.clear();
 }
 
-void Manager::load() {
+void Manager::load(std::filesystem::path path) {
   clear();
 
-  sequlist.load("modules/sequlist.json");
+  sequlist.load(path / "modules/sequlist.json");
 
   for (const std::filesystem::directory_entry entry :
-       std::filesystem::directory_iterator("modules")) {
+       std::filesystem::directory_iterator(path / "modules")) {
     if (std::filesystem::is_directory(entry)) {
       Module module;
-      module.load(std::filesystem::path(entry).append("module.json").string());
+      module.load((entry.path() / "module.json").string());
       module_map[module["name"]] = module;
 
       Localization localization;
-      localization.load(std::filesystem::path(entry).append("localization.json").string());
+      localization.load((entry.path() / "localization.json").string());
       localization_map[module["name"]] = localization;
 
       Setting setting;
-      setting.load(std::filesystem::path(entry).append("setting.json").string());
+      setting.load((entry.path() / "setting.json").string());
       setting_map[module["name"]] = setting;
 
       if (!std::count(sequlist.begin(), sequlist.end(), module["name"])) {

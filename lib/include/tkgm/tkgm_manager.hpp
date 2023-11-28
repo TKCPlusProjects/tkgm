@@ -33,7 +33,7 @@ public:
   /// @brief 清空数据
   void clear();
   /// @brief 加载数据
-  void load();
+  void load(std::filesystem::path path = std::filesystem::path("."));
   /// @brief 保存模组顺序
   void save_sequlist();
   /// @brief 保存设置数据
