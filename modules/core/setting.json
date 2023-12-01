@@ -1,57 +1,71 @@
 {
   "$schema": "../setting_schema.json",
-  "tab_core": {
-    "group_core": [
-      {
-        "name": "setting_check",
-        "type": "checkbox",
-        "default": 1,
-        "value": 1
-      },
-      {
-        "name": "setting_hp",
-        "type": "slideint",
-        "min": 0,
-        "max": 100,
-        "default": 100,
-        "value": 100
-      },
-      {
-        "name": "setting_mp",
-        "type": "slidefloat",
-        "min": 0.0,
-        "max": 100.0,
-        "default": 100.0,
-        "value": 100.0
-      }
-    ]
-  },
-  "tab_control": {
-    "group_core": [
-      {
-        "name": "setting_left",
-        "type": "keybutton",
-        "default": 513,
-        "value": 513
-      },
-      {
-        "name": "setting_right",
-        "type": "keybutton",
-        "default": 514,
-        "value": 514
-      },
-      {
-        "name": "setting_up",
-        "type": "keybutton",
-        "default": 515,
-        "value": 515
-      },
-      {
-        "name": "setting_down",
-        "type": "keybutton",
-        "default": 516,
-        "value": 516
-      }
-    ]
-  }
+  "root": [
+    {
+      "name": "tab_core",
+      "content": [
+        {
+          "name": "group_core",
+          "content": [
+            {
+              "name": "setting_check",
+              "type": "checkbox",
+              "default": 1,
+              "value": 1
+            },
+            {
+              "name": "setting_hp",
+              "type": "slideint",
+              "min": 0,
+              "max": 100,
+              "default": 100,
+              "value": 100
+            },
+            {
+              "name": "setting_mp",
+              "type": "slidefloat",
+              "min": 0.0,
+              "max": 100.0,
+              "default": 100.0,
+              "value": 100.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tab_control",
+      "content": [
+        {
+          "name": "group_core",
+          "content": [
+            {
+              "name": "setting_left",
+              "type": "keybutton",
+              "default": 513,
+              "value": 513
+            },
+            {
+              "name": "setting_right",
+              "type": "keybutton",
+              "default": 514,
+              "value": 514
+            },
+            {
+              "name": "setting_up",
+              "type": "keybutton",
+              "default": 515,
+              "value": 515
+            },
+            {
+              "name": "setting_down",
+              "type": "keybutton",
+              "default": 516,
+              "value": 516
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

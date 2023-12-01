@@ -4,137 +4,168 @@
   "properties": {
     "$schema": {
       "const": "../setting_schema.json"
-    }
-  },
-  "patternProperties": {
-    "^tab_[a-z]+$": {
-      "type": "object",
-      "patternProperties": {
-        "^group_[a-z]+$": {
-          "type": "array",
-          "items": {
-            "oneOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "pattern": "^setting_[a-z|0-9|_]+$"
-                  },
-                  "type": {
-                    "const": "keybutton"
-                  },
-                  "default": {
-                    "type": "number"
-                  },
-                  "value": {
-                    "type": "number"
-                  }
+    },
+    "root": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^tab_[a-z]+$"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^group_[a-z]+$"
                 },
-                "required": [
-                  "name",
-                  "type",
-                  "default",
-                  "value"
-                ]
+                "content": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "^setting_[a-z|0-9|_]+$"
+                          },
+                          "type": {
+                            "const": "keybutton"
+                          },
+                          "default": {
+                            "type": "number"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "name",
+                          "type",
+                          "default",
+                          "value"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "^setting_[a-z|0-9|_]+$"
+                          },
+                          "type": {
+                            "const": "checkbox"
+                          },
+                          "default": {
+                            "type": "number"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "name",
+                          "type",
+                          "default",
+                          "value"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "^setting_[a-z|0-9|_]+$"
+                          },
+                          "type": {
+                            "const": "slideint"
+                          },
+                          "min": {
+                            "type": "number"
+                          },
+                          "max": {
+                            "type": "number"
+                          },
+                          "default": {
+                            "type": "number"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "name",
+                          "type",
+                          "default",
+                          "value",
+                          "min",
+                          "max"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "^setting_[a-z|0-9|_]+$"
+                          },
+                          "type": {
+                            "const": "slidefloat"
+                          },
+                          "min": {
+                            "type": "number"
+                          },
+                          "max": {
+                            "type": "number"
+                          },
+                          "default": {
+                            "type": "number"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "name",
+                          "type",
+                          "default",
+                          "value",
+                          "min",
+                          "max"
+                        ]
+                      }
+                    ]
+                  }
+                }
               },
-              {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "pattern": "^setting_[a-z|0-9|_]+$"
-                  },
-                  "type": {
-                    "const": "checkbox"
-                  },
-                  "default": {
-                    "type": "number"
-                  },
-                  "value": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "name",
-                  "type",
-                  "default",
-                  "value"
-                ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "pattern": "^setting_[a-z|0-9|_]+$"
-                  },
-                  "type": {
-                    "const": "slideint"
-                  },
-                  "min": {
-                    "type": "number"
-                  },
-                  "max": {
-                    "type": "number"
-                  },
-                  "default": {
-                    "type": "number"
-                  },
-                  "value": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "name",
-                  "type",
-                  "default",
-                  "value",
-                  "min",
-                  "max"
-                ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "pattern": "^setting_[a-z|0-9|_]+$"
-                  },
-                  "type": {
-                    "const": "slidefloat"
-                  },
-                  "min": {
-                    "type": "number"
-                  },
-                  "max": {
-                    "type": "number"
-                  },
-                  "default": {
-                    "type": "number"
-                  },
-                  "value": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "name",
-                  "type",
-                  "default",
-                  "value",
-                  "min",
-                  "max"
-                ]
-              }
-            ]
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "content"
+              ]
+            }
           }
-        }
-      },
-      "additionalProperties": false
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "content"
+        ]
+      }
     }
   },
   "additionalProperties": false,
   "required": [
-    "$schema"
+    "$schema",
+    "root"
   ]
 }
