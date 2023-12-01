@@ -54,7 +54,7 @@ void Manager::save_setting() {
 void Manager::merge() {
   for (int i = 0; i < sequlist.size(); i++) {
     localization.merge_patch(localization_map[sequlist[i]]);
-    setting.merge_patch(setting_map[sequlist[i]]);
+    setting.merge(setting_map[sequlist[i]]);
   }
 }
 
