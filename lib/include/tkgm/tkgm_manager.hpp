@@ -15,6 +15,13 @@ namespace tkgm
 /// @brief 管理器
 class Manager {
 TKHT_SIGNLETON(Manager);
+private:
+  /// @brief 模组表
+  std::map<std::string, Module> module_map;
+  /// @brief 本地化数据表
+  std::map<std::string, Localization> localization_map;
+  /// @brief 设置数据表
+  std::map<std::string, Setting> setting_map;
 public:
   /// @brief 模组顺序
   Sequlist sequlist;
@@ -22,13 +29,6 @@ public:
   Localization localization;
   /// @brief 设置数据
   Setting setting;
-
-  /// @brief 模组表
-  std::map<std::string, Module> module_map;
-  /// @brief 本地化数据表
-  std::map<std::string, Localization> localization_map;
-  /// @brief 设置数据表
-  std::map<std::string, Setting> setting_map;
   
   /// @brief 清空数据
   void clear();

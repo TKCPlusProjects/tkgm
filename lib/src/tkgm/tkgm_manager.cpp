@@ -5,13 +5,13 @@ namespace tkht
 namespace tkgm
 {
 void Manager::clear() {
-  sequlist.clear();
-  localization.clear();
-  setting.clear();
-
   module_map.clear();
   localization_map.clear();
   setting_map.clear();
+
+  sequlist.clear();
+  localization.clear();
+  setting.clear();
 }
 
 void Manager::load(std::filesystem::path path) {
@@ -53,7 +53,7 @@ void Manager::save_setting() {
 
 void Manager::merge() {
   for (int i = 0; i < sequlist.size(); i++) {
-    localization.merge_patch(localization_map[sequlist[i]]);
+    localization.merge(localization_map[sequlist[i]]);
     setting.merge(setting_map[sequlist[i]]);
   }
 }

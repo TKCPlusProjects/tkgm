@@ -4,6 +4,10 @@ namespace tkht
 {
 namespace tkgm
 {
+void Localization::merge(Localization new_localization) {
+  merge_patch(new_localization);
+}
+
 void Localization::check(std::string language) {
   if (contains(language)) {
     this->language = language;

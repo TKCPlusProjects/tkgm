@@ -18,6 +18,8 @@ public:
     JSON("localization.json", path) {
   }
 
+  void merge(Localization new_localization);
+
   /// @brief 切换语言
   /// @param language 语言
   void check(std::string language);
