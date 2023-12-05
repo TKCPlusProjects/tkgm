@@ -14,6 +14,8 @@ struct Sequlist: JSON {
     JSON("sequlist.json", path) {
   }
 
+  void clear();
+  
   void move(unsigned int from, unsigned int to);
 };
 }

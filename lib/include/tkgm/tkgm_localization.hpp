@@ -18,6 +18,8 @@ public:
     JSON("localization.json", path) {
   }
 
+  void clear();
+
   void merge(Localization new_localization);
 
   /// @brief 切换语言

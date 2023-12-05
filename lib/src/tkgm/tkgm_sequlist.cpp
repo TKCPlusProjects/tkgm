@@ -4,6 +4,10 @@ namespace tkht
 {
 namespace tkgm
 {
+void Sequlist::clear() {
+  JSON::clear();
+}
+
 void Sequlist::move(unsigned int from, unsigned int to) {
   if (from == to || from >= size() || to >= size()) {
     Err("Sequlist移动顺序编号异常: %u -> %u", from, to);

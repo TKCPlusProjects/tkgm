@@ -11,7 +11,7 @@ namespace tkgm
 /// @brief 设置
 struct Setting: JSON {
   /// @brief 设置选项
-  struct Item {
+  struct Item: JSON {
     /// @brief 设置选项类型
     enum Type {
       Keybutton,   ///< 按键绑定
@@ -22,12 +22,12 @@ struct Setting: JSON {
     /// @brief 选项类型
     Type type;
 
+    /// @brief 选项序号
+    std::vector<std::string> key_link;
     /// @brief 选项名称id
     std::string name;
-    /// @brief JSON指针
-    std::shared_ptr<nlohmann::json> json_ptr;
 
-    Item(nlohmann::json json = nullptr);
+    Item(std::vector<std::string> key_link, nlohmann::json json = nullptr);
   };
 
   /// @brief 设置选项
@@ -35,18 +35,18 @@ struct Setting: JSON {
   template <typename T> struct TypeItem: Item {
     T default_value, value;
 
-    TypeItem(nlohmann::json json): Item(json) {
-      default_value = json["default"];
-      value = json["value"];
+    TypeItem(std::vector<std::string> key_link, nlohmann::json json): Item(key_link, json) {
+      default_value = at("default");
+      value = at("value");
     }
 
     virtual void SetValue(T new_value) {
       value = new_value;
-      json_ptr->at("value") = value;
+      at("value") = value;
     }
     virtual void ResetValue() {
       value = default_value;
-      json_ptr->at("value") = value;
+      at("value") = value;
     }
   };
 
@@ -55,9 +55,9 @@ struct Setting: JSON {
   template <typename T> struct IntervalTypeItem: TypeItem<T> {
     T min, max;
 
-    IntervalTypeItem(nlohmann::json json): TypeItem<T>(json) {
-      min = json["min"];
-      max = json["max"];
+    IntervalTypeItem(std::vector<std::string> key_link, nlohmann::json json): TypeItem<T>(key_link, json) {
+      min = at("min");
+      max = at("max");
     }
 
     virtual void SetValue(T new_value) override {
@@ -69,39 +69,39 @@ struct Setting: JSON {
   
   /// @brief 设置选项 按键绑定
   struct Keybutton: TypeItem<int> {
-    Keybutton(nlohmann::json json):TypeItem<int>(json) { type = Item::Type::Keybutton; }
+    Keybutton(std::vector<std::string> key_link, nlohmann::json json):TypeItem<int>(key_link, json) { type = Item::Type::Keybutton; }
   };
   /// @brief 设置选项 勾选框
   struct Checkbox: TypeItem<int> {
-    Checkbox(nlohmann::json json):TypeItem<int>(json) { type = Item::Type::Checkbox; }
+    Checkbox(std::vector<std::string> key_link, nlohmann::json json):TypeItem<int>(key_link, json) { type = Item::Type::Checkbox; }
   };
   /// @brief 设置选项 整型数
   struct Slideint: IntervalTypeItem<int> {
-    Slideint(nlohmann::json json):IntervalTypeItem<int>(json) { type = Item::Type::Slideint; }
+    Slideint(std::vector<std::string> key_link, nlohmann::json json):IntervalTypeItem<int>(key_link, json) { type = Item::Type::Slideint; }
   };
   /// @brief 设置选项 浮点数
   struct Slidefloat: IntervalTypeItem<float> {
-    Slidefloat(nlohmann::json json):IntervalTypeItem<float>(json) { type = Item::Type::Slidefloat; }
+    Slidefloat(std::vector<std::string> key_link, nlohmann::json json):IntervalTypeItem<float>(key_link, json) { type = Item::Type::Slidefloat; }
   };
 
   /// @brief 设置小组
-  struct Group {
+  struct Group: JSON {
     /// @brief 小组名称id
     std::string name;
     /// @brief 选项列表
     std::vector<std::shared_ptr<Item>> item_list;
 
-    Group(nlohmann::json json);
+    Group(std::vector<std::string> key_link, nlohmann::json json);
   };
 
   /// @brief 设置选项卡
-  struct Tab {
+  struct Tab: JSON {
     /// @brief 选项卡名称id
     std::string name;
     /// @brief 小组列表
     std::vector<std::shared_ptr<Group>> group_list;
 
-    Tab(nlohmann::json json);
+    Tab(std::vector<std::string> key_link, nlohmann::json json);
   };
 
   /// @brief 选项卡列表
@@ -111,7 +111,9 @@ struct Setting: JSON {
     JSON("setting.json", path) {
   }
 
-  void merge(Setting new_setting);
+  void clear();
+  
+  void merge(std::vector<std::string> key_link, Setting new_setting);
 };
 }
 }

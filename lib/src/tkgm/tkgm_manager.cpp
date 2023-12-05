@@ -9,15 +9,15 @@ void Manager::clear() {
   localization_map.clear();
   setting_map.clear();
 
-  sequlist.clear();
-  localization.clear();
-  setting.clear();
+  sequlist->clear();
+  localization->clear();
+  setting->clear();
 }
 
 void Manager::load(std::filesystem::path path) {
   clear();
 
-  sequlist.load(path / "modules/sequlist.json");
+  sequlist->load(path / "modules/sequlist.json");
 
   for (const std::filesystem::directory_entry entry :
        std::filesystem::directory_iterator(path / "modules")) {
@@ -34,32 +34,48 @@ void Manager::load(std::filesystem::path path) {
       setting.load((entry.path() / "setting.json").string());
       setting_map[module["name"]] = setting;
 
-      if (!std::count(sequlist.begin(), sequlist.end(), module["name"])) {
-        sequlist.push_back(module["name"]);
+      if (!std::count(sequlist->begin(), sequlist->end(), module["name"])) {
+        sequlist->push_back(module["name"]);
       }
     }
   }
 }
 
 void Manager::save_sequlist() {
-  sequlist.save();
+  sequlist->save();
 }
 
 void Manager::save_setting() {
+  for (std::shared_ptr<Setting::Tab> tab: Manager::Shared().setting->tab_list) {
+    for (std::shared_ptr<Setting::Group> group: tab->group_list) {
+      for (std::shared_ptr<Setting::Item> item: group->item_list) {
+        setting_map
+        .at(item->key_link[0])
+        .at("root").at(std::stoi(item->key_link[1]))
+        .at("content").at(std::stoi(item->key_link[2]))
+        .at("content").at(std::stoi(item->key_link[3]))
+        .merge_patch(*item);
+      }
+    }
+  }
+
   for (std::pair<std::string, Setting> pair_setting : setting_map) {
     pair_setting.second.save();
   }
 }
 
 void Manager::merge() {
-  for (int i = 0; i < sequlist.size(); i++) {
-    localization.merge(localization_map[sequlist[i]]);
-    setting.merge(setting_map[sequlist[i]]);
+  localization->clear();
+  setting->clear();
+  for (int i = 0; i < sequlist->size(); i++) {
+    std::string name = sequlist->at(i);
+    localization->merge(localization_map[name]);
+    setting->merge({name}, setting_map[name]);
   }
 }
 
 void Manager::move(unsigned int from, unsigned int to) {
-  sequlist.move(from, to);
+  sequlist->move(from, to);
 }
 }
 }

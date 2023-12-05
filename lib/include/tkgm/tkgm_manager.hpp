@@ -24,11 +24,11 @@ private:
   std::map<std::string, Setting> setting_map;
 public:
   /// @brief 模组顺序
-  Sequlist sequlist;
+  std::shared_ptr<Sequlist> sequlist = std::make_shared<Sequlist>();
   /// @brief 本地化数据
-  Localization localization;
+  std::shared_ptr<Localization> localization = std::make_shared<Localization>();
   /// @brief 设置数据
-  Setting setting;
+  std::shared_ptr<Setting> setting = std::make_shared<Setting>();
   
   /// @brief 清空数据
   void clear();
