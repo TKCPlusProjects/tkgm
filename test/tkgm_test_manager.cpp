@@ -88,7 +88,7 @@ BOOST_AUTO_TEST_CASE(tkgm_test_manager) {
   item = setting->tab_list[1]->group_list[0]->item_list[3];
   BOOST_CHECK_EQUAL(item->at("name"), "setting_down");
   BOOST_CHECK_EQUAL(item->at("value"), 516);
-  item = setting->tab_list[2]->group_list[0]->item_list[0];
+  item = setting->tab_list[1]->group_list[1]->item_list[0];
   BOOST_CHECK_EQUAL(item->at("name"), "setting_jump");
   BOOST_CHECK_EQUAL(item->at("value"), 525);
 }

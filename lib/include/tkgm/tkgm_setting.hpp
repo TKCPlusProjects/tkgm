@@ -92,6 +92,8 @@ struct Setting: JSON {
     std::vector<std::shared_ptr<Item>> item_list;
 
     Group(std::vector<std::string> key_link, nlohmann::json json);
+
+    void merge(std::shared_ptr<Group> new_group);
   };
 
   /// @brief 设置选项卡
@@ -102,6 +104,8 @@ struct Setting: JSON {
     std::vector<std::shared_ptr<Group>> group_list;
 
     Tab(std::vector<std::string> key_link, nlohmann::json json);
+
+    void merge(std::shared_ptr<Tab> new_tab);
   };
 
   /// @brief 选项卡列表
